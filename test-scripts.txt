@@ -1,4 +1,57 @@
 {
+  __schema {
+    queryType {
+      name
+      description
+      fields {
+        name
+        description
+        isDeprecated
+        deprecationReason
+      }
+    }
+  }
+}
+
+
+{
+  __type(name: "Repository") {
+    kind
+    name
+    description
+  }
+}
+
+# (first: 5)
+# (last: 3)
+
+{
+  repository(name: "graphql", owner: "facebook") {
+    id
+    issues (last: 5, states: CLOSED) {
+      edges {
+        node {
+          id
+          number
+          title
+        }
+      }
+    }
+  }
+}
+
+
+{
+  repositoryOwner(login: "facebook") {
+    id
+    path
+    url
+  }
+}
+
+
+
+{
   repository(owner: "github", name: "opensource.guide") {
     id
     name
@@ -25,5 +78,29 @@
         }
       }
     }
+  }
+}
+
+****
+Mutation
+
+mutation NewReaction($input: AddReactionInput!) {
+  addReaction(input: $input) {
+    reaction {
+      content
+    }
+  }
+}
+
+
+*****
+Input Variables
+
+{
+  "input": {
+    "clientMutationId": "5159212",
+    "subjectId": "MDEyOklzc3VlQ29tbWVudDI4NDcyODQ4NQ==",
+    "content": "HEART"
+    # “content”: “HOORAY”		
   }
 }
