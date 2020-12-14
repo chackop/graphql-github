@@ -1,2 +1,2 @@
 # graphql-github
-Some GraphQL to try in playground
+Some GraphQL github queries to try in playground
